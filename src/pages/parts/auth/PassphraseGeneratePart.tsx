@@ -80,7 +80,7 @@ export function PassphraseGeneratePart(props: PassphraseGeneratePartProps) {
             className="w-full"
           >
             <Icon icon={Icons.LOCK} className="mr-2" />
-            {t("auth.generate.usePasskeyInstead") ?? "Use passkey instead"}
+            {t("auth.generate.usePasskeyInstead")}
           </Button>
           {passkeyResult.error && (
             <p className="mt-2 text-authentication-errorText text-sm text-center">

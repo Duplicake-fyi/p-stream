@@ -156,7 +156,12 @@ export function decryptData(data: string, secret: Uint8Array) {
 // Passkey/WebAuthn utilities
 
 export function isPasskeySupported(): boolean {
+  // Passkeys require HTTPS
+  const isSecureContext =
+    typeof window !== "undefined" && window.location.protocol === "https:";
+
   return (
+    isSecureContext &&
     typeof navigator !== "undefined" &&
     "credentials" in navigator &&
     "create" in navigator.credentials &&

@@ -188,8 +188,7 @@ export function VerifyPassphrase(props: VerifyPassphraseProps) {
             icon={<Icon icon={Icons.CIRCLE_CHECK} />}
             title={t("auth.verify.title")}
           >
-            {t("auth.verify.passkeyDescription") ??
-              "Please authenticate with your passkey to complete registration."}
+            {t("auth.verify.passkeyDescription")}
           </LargeCardText>
           {passkeyResult.error ? (
             <p className="mt-3 text-authentication-errorText">
@@ -203,8 +202,7 @@ export function VerifyPassphrase(props: VerifyPassphraseProps) {
               onClick={() => authenticatePasskeyFn()}
             >
               <Icon icon={Icons.LOCK} className="mr-2" />
-              {t("auth.verify.authenticatePasskey") ??
-                "Authenticate with Passkey"}
+              {t("auth.verify.authenticatePasskey")}
             </Button>
           </LargeCardButtons>
         </form>

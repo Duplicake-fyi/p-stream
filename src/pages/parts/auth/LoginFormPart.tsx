@@ -117,8 +117,40 @@ export function LoginFormPart(props: LoginFormPartProps) {
         {t("auth.login.description")}
       </LargeCardText>
       <div className="space-y-4">
+        <AuthInputBox
+          label={t("auth.deviceNameLabel") ?? undefined}
+          value={device}
+          onChange={setDevice}
+          placeholder={t("auth.deviceNamePlaceholder") ?? undefined}
+        />
+        <AuthInputBox
+          label={t("auth.login.passphraseLabel") ?? undefined}
+          value={mnemonic}
+          autoComplete="username"
+          name="username"
+          onChange={setMnemonic}
+          placeholder={t("auth.login.passphrasePlaceholder") ?? undefined}
+          passwordToggleable
+        />
+        {(result.error || passkeyResult.error) &&
+        !result.loading &&
+        !passkeyResult.loading ? (
+          <p className="text-authentication-errorText">
+            {result.error?.message || passkeyResult.error?.message}
+          </p>
+        ) : null}
         {isPasskeySupported() && (
-          <div>
+          <div className="relative mb-4">
+            <div className="relative my-4">
+              <div className="absolute inset-0 flex items-center">
+                <div className="w-full border-t border-authentication-border/50" />
+              </div>
+              <div className="relative flex justify-center text-sm">
+                <span className="px-2 bg-authentication-bg text-authentication-text">
+                  {t("auth.login.or")}
+                </span>
+              </div>
+            </div>
             <Button
               theme="secondary"
               onClick={() => executePasskey(device)}
@@ -131,42 +163,10 @@ export function LoginFormPart(props: LoginFormPartProps) {
               className="w-full"
             >
               <Icon icon={Icons.LOCK} className="mr-2" />
-              {t("auth.login.usePasskey") ?? "Use passkey"}
+              {t("auth.login.usePasskey")}
             </Button>
-            <div className="relative my-4">
-              <div className="absolute inset-0 flex items-center">
-                <div className="w-full border-t border-authentication-border/50" />
-              </div>
-              <div className="relative flex justify-center text-sm">
-                <span className="px-2 bg-authentication-bg text-authentication-text">
-                  {t("auth.login.or") ?? "or"}
-                </span>
-              </div>
-            </div>
           </div>
         )}
-        <AuthInputBox
-          label={t("auth.login.passphraseLabel") ?? undefined}
-          value={mnemonic}
-          autoComplete="username"
-          name="username"
-          onChange={setMnemonic}
-          placeholder={t("auth.login.passphrasePlaceholder") ?? undefined}
-          passwordToggleable
-        />
-        <AuthInputBox
-          label={t("auth.deviceNameLabel") ?? undefined}
-          value={device}
-          onChange={setDevice}
-          placeholder={t("auth.deviceNamePlaceholder") ?? undefined}
-        />
-        {(result.error || passkeyResult.error) &&
-        !result.loading &&
-        !passkeyResult.loading ? (
-          <p className="text-authentication-errorText">
-            {result.error?.message || passkeyResult.error?.message}
-          </p>
-        ) : null}
       </div>
 
       <LargeCardButtons>
