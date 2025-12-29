@@ -71,30 +71,29 @@ export function PassphraseGeneratePart(props: PassphraseGeneratePartProps) {
       />
 
       <LargeCardButtons>
+        {isPasskeySupported() && (
+          <div className="mt-4">
+            <Button
+              theme="purple"
+              onClick={handlePasskeyClick}
+              loading={passkeyResult.loading}
+              disabled={passkeyResult.loading}
+              className="w-full"
+            >
+              <Icon icon={Icons.LOCK} className="mr-2" />
+              {t("auth.generate.usePasskeyInstead")}
+            </Button>
+            {passkeyResult.error && (
+              <p className="mt-2 text-authentication-errorText text-sm text-center">
+                {passkeyResult.error.message}
+              </p>
+            )}
+          </div>
+        )}
         <Button theme="purple" onClick={() => props.onNext?.(mnemonic)}>
           {t("auth.generate.next")}
         </Button>
       </LargeCardButtons>
-
-      {isPasskeySupported() && (
-        <div className="mt-4">
-          <Button
-            theme="secondary"
-            onClick={handlePasskeyClick}
-            loading={passkeyResult.loading}
-            disabled={passkeyResult.loading}
-            className="w-full"
-          >
-            <Icon icon={Icons.LOCK} className="mr-2" />
-            {t("auth.generate.usePasskeyInstead")}
-          </Button>
-          {passkeyResult.error && (
-            <p className="mt-2 text-authentication-errorText text-sm text-center">
-              {passkeyResult.error.message}
-            </p>
-          )}
-        </div>
-      )}
     </LargeCard>
   );
 }

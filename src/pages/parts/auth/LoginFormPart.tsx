@@ -132,13 +132,6 @@ export function LoginFormPart(props: LoginFormPartProps) {
           placeholder={t("auth.login.passphrasePlaceholder") ?? undefined}
           passwordToggleable
         />
-        {(result.error || passkeyResult.error) &&
-        !result.loading &&
-        !passkeyResult.loading ? (
-          <p className="text-authentication-errorText">
-            {result.error?.message || passkeyResult.error?.message}
-          </p>
-        ) : null}
         {isPasskeySupported() && (
           <div className="relative mb-4">
             <div className="relative my-4">
@@ -167,6 +160,13 @@ export function LoginFormPart(props: LoginFormPartProps) {
             </Button>
           </div>
         )}
+        {(result.error || passkeyResult.error) &&
+        !result.loading &&
+        !passkeyResult.loading ? (
+          <p className="text-authentication-errorText">
+            {result.error?.message || passkeyResult.error?.message}
+          </p>
+        ) : null}
       </div>
 
       <LargeCardButtons>
