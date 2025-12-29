@@ -70,6 +70,12 @@ export function PassphraseGeneratePart(props: PassphraseGeneratePartProps) {
         onCustomPassphrase={handleCustomPassphrase}
       />
 
+      <LargeCardButtons>
+        <Button theme="purple" onClick={() => props.onNext?.(mnemonic)}>
+          {t("auth.generate.next")}
+        </Button>
+      </LargeCardButtons>
+
       {isPasskeySupported() && (
         <div className="mt-4">
           <Button
@@ -89,12 +95,6 @@ export function PassphraseGeneratePart(props: PassphraseGeneratePartProps) {
           )}
         </div>
       )}
-
-      <LargeCardButtons>
-        <Button theme="purple" onClick={() => props.onNext?.(mnemonic)}>
-          {t("auth.generate.next")}
-        </Button>
-      </LargeCardButtons>
     </LargeCard>
   );
 }

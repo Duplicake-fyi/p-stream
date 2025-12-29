@@ -201,7 +201,9 @@ export function VerifyPassphrase(props: VerifyPassphraseProps) {
               loading={passkeyResult.loading}
               onClick={() => authenticatePasskeyFn()}
             >
-              <Icon icon={Icons.LOCK} className="mr-2" />
+              {passkeyResult.loading ? (
+                <Icon icon={Icons.LOCK} className="mr-2" />
+              ) : null}
               {t("auth.verify.authenticatePasskey")}
             </Button>
           </LargeCardButtons>
