@@ -192,7 +192,7 @@ export function VerifyPassphrase(props: VerifyPassphraseProps) {
           </LargeCardText>
           {passkeyResult.error ? (
             <p className="mt-3 text-authentication-errorText">
-              {passkeyResult.error.message}
+              {t("auth.verify.passkeyError")}
             </p>
           ) : null}
           <LargeCardButtons>

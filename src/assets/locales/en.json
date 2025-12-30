@@ -213,9 +213,10 @@
       "passphraseLabel": "Your 12-word passphrase",
       "recaptchaFailed": "ReCaptcha validation failed",
       "register": "Create account",
-      "title": "Confirm your passphrase",
+      "title": "Confirm your account",
       "passkeyDescription": "Please authenticate with your passkey to complete registration.",
-      "authenticatePasskey": "Authenticate with Passkey"
+      "authenticatePasskey": "Authenticate with Passkey",
+      "passkeyError": "Passkey verification failed"
     }
   },
   "errors": {
